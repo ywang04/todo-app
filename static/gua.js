@@ -1,36 +1,16 @@
+/**
+ * @Author: ywang04
+ * @Date:   2018-01-03T10:00:51+11:00
+ * @Last modified by:   ywang04
+ * @Last modified time: 2018-01-08T12:06:30+11:00
+ */
+
 var log = console.log.bind(console)
 
 var e = function(selector) {
   return document.querySelector(selector);
 }
 
-var bindEvent = function(element, eventType, selector, callback) {
-  if (callback === undefined) {
-    callback = selector
-    selector = null
-  }
-  element.addEventListener(eventType,function(event) {
-    //use event delegation
-    if (selector) {
-      var target = event.target
-      if (target.matches(selector)) {
-        callback.call(target)
-      }
-    } else {
-      callback(event)  //without event delegation
-    }
-  })
-}
-
-
-var ajax = function(method, path, data, responseCallback) {
-  var r = new XMLHttpRequest()
-  r.open(method, path, true)
-  r.setRequestHeader('Content-Type', 'application/json')
-  r.onreadystatechange = function() {
-    if (r.readyState === 4) {
-      responseCallback(r)
-    }
-  }
-  r.send(data)
+var bindEvent = function(element, eventType, callback) {
+  element.addEventListener(eventType, callback)
 }

@@ -1,67 +1,11 @@
-/*
-var ajax = function(method, path, data, responseCallback) {
-  var r = new XMLHttpRequest()
-  r.open(method, path, true)
-  r.setRequestHeader('Content-Type', 'application/json')
-  r.onreadystatechange = function() {
-    if (r.readyState === 4) {
-      responseCallback(r)
-    }
-  }
-  r.send(data)
-}
+/**
+ * @Author: ywang04
+ * @Date:   2018-01-03T10:00:51+11:00
+ * @Last modified by:   ywang04
+ * @Last modified time: 2018-01-10T11:07:46+11:00
+ */
 
-ajax('GET', '/todo/all', '', function(r) {
-    console.log(r.response)
-    console.log(typeof r.response)
-})
 
-var ajax = function(method, path, data, responseCallback) {
-  var r = new XMLHttpRequest()
-  r.open(method, path, true)
-  r.setRequestHeader('Content-Type', 'application/json')
-  r.onreadystatechange = function() {
-    if (r.readyState === 4) {
-      responseCallback(r)
-    }
-  }
-  r.send(data)
-}
-
-var todoId = '2'
-var url = '/todo/delete/' + todoId
-
-ajax('GET', url, '', function(r) {
-    alert('服务器响应:' + r.response)
-
-})
-
-var ajax = function(method, path, data, responseCallback) {
-  var r = new XMLHttpRequest()
-  r.open(method, path, true)
-  r.setRequestHeader('Content-Type', 'application/json')
-  r.onreadystatechange = function() {
-    if (r.readyState === 4) {
-      responseCallback(r)
-    }
-  }
-  r.send(data)
-}
-
-var todoId = '3'
-var url = '/todo/update/' + todoId
-var data = {
-    task: 'great'
-}
-
-data = JSON.stringify(data)
-
-ajax('POST', url, data, function(r) {
-    alert('服务器响应:' + r.response)
-
-})
-
-*/
 
 var appendHtml = function(element, html) {
   element.insertAdjacentHTML('beforeend', html)
@@ -81,7 +25,7 @@ var template = function(todo) {
   return t
 }
 
-var insertTodo = function(todo) {
+var appendTodo = function(todo) {
   var container = e('#id-div-container')
   var t = template(todo)
   appendHtml(container, t)
@@ -97,7 +41,7 @@ var loadTodos = function() {
     var todos = JSON.parse(r.response)
     for (var i = 0; i < todos.length; i++) {
       var todo = todos[i]
-      insertTodo(todo)
+      appendTodo(todo)
     }
   })
 }
@@ -198,15 +142,15 @@ var bindEventUpdate = function() {
       todoSpan.remove()
       target.innerHTML = "Save"
     } else if (target.innerHTML === "Save") {
-        var todoInput = todoCell.querySelector('.todo-input')
-        var task = todoInput.value
-        var t = `
+      var todoInput = todoCell.querySelector('.todo-input')
+      var task = todoInput.value
+      var t = `
         <span class="todo-content">${task}</span>
         `
-        todoInput.insertAdjacentHTML('beforebegin', t)
-        todoInput.remove()
-        target.innerHTML = "Update"
-        updateTodo(id, task)
+      todoInput.insertAdjacentHTML('beforebegin', t)
+      todoInput.remove()
+      target.innerHTML = "Update"
+      updateTodo(id, task)
     }
   })
 }

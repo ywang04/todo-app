@@ -2,7 +2,7 @@
  * @Author: ywang04
  * @Date:   2018-01-03T10:00:51+11:00
  * @Last modified by:   ywang04
- * @Last modified time: 2018-01-11T10:18:15+11:00
+ * @Last modified time: 2018-01-12T21:36:21+11:00
  */
 
 var log = console.log.bind(console)
@@ -31,4 +31,11 @@ var ajax = function(request) {
   } else {
     r.send(request.data)
   }
+}
+
+module.exports = {
+  log: log,
+  e: e,
+  bindEvent: bindEvent,
+  ajax: ajax
 }

@@ -2,7 +2,7 @@
  * @Author: ywang04
  * @Date:   2018-01-11T09:04:37+11:00
  * @Last modified by:   ywang04
- * @Last modified time: 2018-01-11T15:31:26+11:00
+ * @Last modified time: 2018-01-12T11:26:10+11:00
  */
 
 var todoAjax = function() {
@@ -35,7 +35,7 @@ var todoAjax = function() {
   var load = function() {
     var request = {
       method: 'GET',
-      url: '/todo/all',
+      url: '/api/todo/all',
       contentType: 'application/json',
       responseCallback: function(r) {
         var todos = JSON.parse(r.response)
@@ -52,11 +52,12 @@ var todoAjax = function() {
     var data = JSON.stringify(todo)
     var request = {
       method: 'POST',
-      url: '/todo/add',
+      url: '/api/todo/add',
       contentType: 'application/json',
       data: data,
       responseCallback: function(r) {
-        log("server response:", r.response)
+        var todo = JSON.parse(r.response)
+        append(todo)
       }
     }
     ajax(request)
@@ -65,7 +66,7 @@ var todoAjax = function() {
   var remove = function(id) {
     var request = {
       method: 'GET',
-      url: '/todo/delete/' + id,
+      url: '/api/todo/delete/' + id,
       contentType: 'application/json',
       responseCallback: function(r) {
         log("server response:", r.response)
@@ -81,7 +82,7 @@ var todoAjax = function() {
     var data = JSON.stringify(todo);
     var request = {
       method: 'POST',
-      url: '/todo/update/' + id,
+      url: '/api/todo/update/' + id,
       contentType: 'application/json',
       data: data,
       responseCallback: function(r) {
@@ -93,9 +94,8 @@ var todoAjax = function() {
 
   return {
     load: load,
-    append: append,
     add: add,
-    delete: remove,
+    remove: remove,
     update: update
   }
 

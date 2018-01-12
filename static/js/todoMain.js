@@ -2,7 +2,7 @@
  * @Author: ywang04
  * @Date:   2018-01-03T10:00:51+11:00
  * @Last modified by:   ywang04
- * @Last modified time: 2018-01-12T21:28:39+11:00
+ * @Last modified time: 2018-01-12T21:40:28+11:00
  */
 
 var utils = require('./utils.js')
@@ -12,7 +12,7 @@ var todo = require('./todoAjax.js')
 var bindEventAdd = function() {
   var input = utils.e('#id-input-todo')
   var addButton = utils.e('#id-button-add')
-  bindEvent(addButton, 'click', function() {
+  utils.bindEvent(addButton, 'click', function() {
     var task = input.value
     var data = {
       task: task
@@ -24,7 +24,7 @@ var bindEventAdd = function() {
 
 var bindEventDelete = function() {
   var todoContainer = utils.e('#id-div-container')
-  bindEvent(todoContainer, 'click', function(event) {
+  utils.bindEvent(todoContainer, 'click', function(event) {
     var target = event.target
     if (target.classList.contains('todo-delete')) {
       var todoCell = target.closest('.todo-cell')
@@ -37,7 +37,7 @@ var bindEventDelete = function() {
 
 var bindEventUpdate = function() {
   var todoContainer = utils.e('#id-div-container')
-  bindEvent(todoContainer, 'click', function(event) {
+  utils.bindEvent(todoContainer, 'click', function(event) {
     var target = event.target
     var todoCell = target.closest('.todo-cell')
     var id = todoCell.dataset.id

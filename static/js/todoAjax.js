@@ -2,7 +2,7 @@
  * @Author: ywang04
  * @Date:   2018-01-11T09:04:37+11:00
  * @Last modified by:   ywang04
- * @Last modified time: 2018-01-12T21:29:42+11:00
+ * @Last modified time: 2018-01-12T21:40:46+11:00
  */
 
 var utils = require('./utils.js')
@@ -45,7 +45,7 @@ var load = function() {
       }
     }
   }
-  ajax(request)
+  utils.ajax(request)
 }
 
 var add = function(todo) {
@@ -60,7 +60,7 @@ var add = function(todo) {
       append(todo)
     }
   }
-  ajax(request)
+  utils.ajax(request)
 }
 
 var remove = function(id) {
@@ -69,10 +69,10 @@ var remove = function(id) {
     url: '/api/todo/delete/' + id,
     contentType: 'application/json',
     responseCallback: function(r) {
-      log("server response:", r.response)
+      utils.log("server response:", r.response)
     }
   }
-  ajax(request)
+  utils.ajax(request)
 }
 
 var update = function(id, task) {
@@ -86,10 +86,10 @@ var update = function(id, task) {
     contentType: 'application/json',
     data: data,
     responseCallback: function(r) {
-      log("server response:", r.response)
+      utils.log("server response:", r.response)
     }
   }
-  ajax(request)
+  utils.ajax(request)
 }
 
 module.exports = {

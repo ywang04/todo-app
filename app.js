@@ -2,7 +2,7 @@
  * @Author: ywang04
  * @Date:   2017-12-18T09:11:51+11:00
  * @Last modified by:   ywang04
- * @Last modified time: 2018-01-11T21:40:03+11:00
+ * @Last modified time: 2018-01-12T09:56:24+11:00
  */
 
 
@@ -13,7 +13,6 @@ app.use(express.static('static'))
 app.use(bodyParser.json())
 
 var todo = require('./todo.js')
-console.log(todo)
 
 var sendHtml = function(path, response) {
   var fs = require('fs')
@@ -32,14 +31,14 @@ app.get('/', function(request, response) {
 })
 
 app.post('/api/todo/add', function(request, response) {
-  var todo = request.body
-  var r = todo.add(todo)
+  var data = request.body
+  var r = todo.add(data)
   response.send(r)
 })
 
 app.get('/api/todo/delete/:id', function(request, response) {
   var id = parseInt(request.params.id)
-  var r = todo.delete(id)
+  var r = todo.remove(id)
   response.send(r)
 })
 

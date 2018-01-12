@@ -2,7 +2,7 @@
  * @Author: ywang04
  * @Date:   2018-01-03T10:00:51+11:00
  * @Last modified by:   ywang04
- * @Last modified time: 2018-01-11T15:32:30+11:00
+ * @Last modified time: 2018-01-12T11:35:07+11:00
  */
 (function() {
   // bind function
@@ -15,7 +15,6 @@
         task: task
       }
       todoAjax.add(data)
-      todoAjax.append(data)
     })
   }
 
@@ -26,7 +25,7 @@
       if (target.classList.contains('todo-delete')) {
         var todoCell = target.closest('.todo-cell')
         var id = todoCell.dataset.id
-        todoAjax.delete(id)
+        todoAjax.remove(id)
         todoCell.remove()
       }
     })

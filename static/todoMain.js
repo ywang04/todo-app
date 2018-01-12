@@ -2,7 +2,7 @@
  * @Author: ywang04
  * @Date:   2018-01-03T10:00:51+11:00
  * @Last modified by:   ywang04
- * @Last modified time: 2018-01-12T11:35:07+11:00
+ * @Last modified time: 2018-01-12T11:42:23+11:00
  */
 (function() {
   // bind function
@@ -15,6 +15,7 @@
         task: task
       }
       todoAjax.add(data)
+      input.value = ""
     })
   }
 

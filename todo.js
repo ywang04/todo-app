@@ -2,7 +2,7 @@
  * @Author: ywang04
  * @Date:   2018-01-11T15:33:29+11:00
  * @Last modified by:   ywang04
- * @Last modified time: 2018-01-13T19:24:47+11:00
+ * @Last modified time: 2018-01-13T19:37:46+11:00
  */
 
 var fs = require('fs')
@@ -62,9 +62,11 @@ t.update = function(id, task) {
   var todos = this.data
   for (var i = 0; i < todos.length; i++) {
     if (id === todos[i].id) {
-      todos[i].task = task
+      var todo = todos[i]
+      todo.task = task
       t.writeTodosToFile()
-      return `todo ${id} has been updated.`
+      console.log(`todo ${id} has been updated.`)
+      return todo
     }
   }
   return `todo ${id} does not exist.`

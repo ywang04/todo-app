@@ -2,7 +2,7 @@
  * @Author: ywang04
  * @Date:   2018-01-11T15:33:29+11:00
  * @Last modified by:   ywang04
- * @Last modified time: 2018-01-13T18:31:45+11:00
+ * @Last modified time: 2018-01-13T19:24:47+11:00
  */
 
 var fs = require('fs')
@@ -68,6 +68,30 @@ t.update = function(id, task) {
     }
   }
   return `todo ${id} does not exist.`
+}
+
+t.done = function(id) {
+  var todos = this.data
+  for (var i = 0; i < todos.length; i++) {
+    if (id === todos[i].id) {
+      var todo = todos[i]
+      todo.status = true
+      t.writeTodosToFile()
+    }
+  }
+  return todo
+}
+
+t.undo = function(id) {
+  var todos = this.data
+  for (var i = 0; i < todos.length; i++) {
+    if (id === todos[i].id) {
+      var todo = todos[i]
+      todo.status = false
+      t.writeTodosToFile()
+    }
+  }
+  return todo
 }
 
 module.exports = t

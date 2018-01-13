@@ -2,7 +2,7 @@
  * @Author: ywang04
  * @Date:   2018-01-11T09:04:37+11:00
  * @Last modified by:   ywang04
- * @Last modified time: 2018-01-13T14:08:40+11:00
+ * @Last modified time: 2018-01-13T19:25:10+11:00
  */
 
 var utils = require('./utils.js')
@@ -14,8 +14,13 @@ var appendHtml = function(element, html) {
 var template = function(todo) {
   var id = todo.id
   var task = todo.task
+  var status = todo.status
+  var done = ""
+  if (status) {
+    done = "todo-done"
+  }
   var t = `
-    <div class="todo-cell" data-id=${id}>
+    <div class="todo-cell ${done}" data-id=${id}>
       <button type="button" name="button" class="todo-status">Done</button>
       <button type="button" name="button" class="todo-delete">Delete</button>
       <button type="button" name="button" class="todo-update">Update</button>
@@ -92,9 +97,35 @@ var update = function(id, task) {
   utils.ajax(request)
 }
 
+var done = function(id) {
+  var request = {
+    method: 'GET',
+    url: '/api/todo/done/' + id,
+    contentType: 'application/json',
+    responseCallback: function(r) {
+      console.log("server response:", r.response)
+    }
+  }
+  utils.ajax(request)
+}
+
+var undo = function(id) {
+  var request = {
+    method: 'GET',
+    url: '/api/todo/undo/' + id,
+    contentType: 'application/json',
+    responseCallback: function(r) {
+      console.log("server response:", r.response)
+    }
+  }
+  utils.ajax(request)
+}
+
 module.exports = {
   load: load,
   add: add,
   delete: remove,
-  update: update
+  update: update,
+  done: done,
+  undo: undo
 }

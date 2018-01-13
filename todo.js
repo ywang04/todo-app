@@ -2,7 +2,7 @@
  * @Author: ywang04
  * @Date:   2018-01-11T15:33:29+11:00
  * @Last modified by:   ywang04
- * @Last modified time: 2018-01-13T19:37:46+11:00
+ * @Last modified time: 2018-01-13T19:39:21+11:00
  */
 
 var fs = require('fs')
@@ -79,9 +79,9 @@ t.done = function(id) {
       var todo = todos[i]
       todo.status = true
       t.writeTodosToFile()
+      return todo
     }
   }
-  return todo
 }
 
 t.undo = function(id) {
@@ -91,9 +91,9 @@ t.undo = function(id) {
       var todo = todos[i]
       todo.status = false
       t.writeTodosToFile()
+      return todo
     }
   }
-  return todo
 }
 
 module.exports = t

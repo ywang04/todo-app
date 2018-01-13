@@ -2,7 +2,7 @@
  * @Author: ywang04
  * @Date:   2018-01-11T15:33:29+11:00
  * @Last modified by:   ywang04
- * @Last modified time: 2018-01-12T10:00:25+11:00
+ * @Last modified time: 2018-01-13T18:31:45+11:00
  */
 
 var fs = require('fs')
@@ -46,10 +46,11 @@ t.add = function(todo) {
   return todo
 }
 
-t.remove = function(id) {
-  for (var i = 0; i < this.data.length; i++) {
-    if (id === this.data[i].id) {
-      this.data.splice(i, 1)
+t.delete = function(id) {
+  var todos = this.data
+  for (var i = 0; i < todos.length; i++) {
+    if (id === todos[i].id) {
+      todos.splice(i, 1)
       t.writeTodosToFile()
       return `todo ${id} has been deleted.`
     }
@@ -58,15 +59,15 @@ t.remove = function(id) {
 }
 
 t.update = function(id, task) {
-  for (var i = 0; i < this.data.length; i++) {
-    if (id === this.data[i].id) {
-      this.data[i].task = task
+  var todos = this.data
+  for (var i = 0; i < todos.length; i++) {
+    if (id === todos[i].id) {
+      todos[i].task = task
       t.writeTodosToFile()
       return `todo ${id} has been updated.`
     }
   }
   return `todo ${id} does not exist.`
 }
-
 
 module.exports = t

@@ -2,10 +2,8 @@
  * @Author: ywang04
  * @Date:   2018-01-03T10:00:51+11:00
  * @Last modified by:   ywang04
- * @Last modified time: 2018-01-12T21:36:21+11:00
+ * @Last modified time: 2018-01-13T13:45:24+11:00
  */
-
-var log = console.log.bind(console)
 
 var e = function(selector) {
   return document.querySelector(selector);

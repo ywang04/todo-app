@@ -2,7 +2,7 @@
  * @Author: ywang04
  * @Date:   2018-01-11T09:04:37+11:00
  * @Last modified by:   ywang04
- * @Last modified time: 2018-01-12T21:40:46+11:00
+ * @Last modified time: 2018-01-13T13:47:06+11:00
  */
 
 var utils = require('./utils.js')
@@ -69,7 +69,7 @@ var remove = function(id) {
     url: '/api/todo/delete/' + id,
     contentType: 'application/json',
     responseCallback: function(r) {
-      utils.log("server response:", r.response)
+      console.log("server response:", r.response)
     }
   }
   utils.ajax(request)
@@ -86,7 +86,7 @@ var update = function(id, task) {
     contentType: 'application/json',
     data: data,
     responseCallback: function(r) {
-      utils.log("server response:", r.response)
+      console.log("server response:", r.response)
     }
   }
   utils.ajax(request)

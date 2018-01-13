@@ -2,7 +2,7 @@
  * @Author: ywang04
  * @Date:   2018-01-03T10:00:51+11:00
  * @Last modified by:   ywang04
- * @Last modified time: 2018-01-13T13:47:26+11:00
+ * @Last modified time: 2018-01-13T15:27:46+11:00
  */
 
 var e = function(selector) {
@@ -31,8 +31,17 @@ var ajax = function(request) {
   }
 }
 
+var toggleClass = function(element, className) {
+  if (element.classList.contains(className)) {
+    element.classList.remove(className)
+  } else {
+    element.classList.add(className)
+  }
+}
+
 module.exports = {
   e: e,
   bindEvent: bindEvent,
+  toggleClass: toggleClass,
   ajax: ajax
 }

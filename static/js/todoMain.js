@@ -2,7 +2,7 @@
  * @Author: ywang04
  * @Date:   2018-01-03T10:00:51+11:00
  * @Last modified by:   ywang04
- * @Last modified time: 2018-01-12T21:40:28+11:00
+ * @Last modified time: 2018-01-13T19:58:19+11:00
  */
 
 var utils = require('./utils.js')
@@ -15,7 +15,8 @@ var bindEventAdd = function() {
   utils.bindEvent(addButton, 'click', function() {
     var task = input.value
     var data = {
-      task: task
+      task: task,
+      status: false
     }
     todo.add(data)
     input.value = ""
@@ -64,10 +65,30 @@ var bindEventUpdate = function() {
   })
 }
 
+var bindEventStatus = function() {
+  var todoContainer = utils.e('#id-div-container')
+  utils.bindEvent(todoContainer, 'click', function(event) {
+    var target = event.target
+    var todoCell = target.closest('.todo-cell')
+    var id = todoCell.dataset.id
+    if (target.classList.contains('todo-status')) {
+      if (todoCell.classList.contains('todo-done')) {
+        todoCell.classList.remove('todo-done')
+        todo.undo(id)
+      } else {
+        todoCell.classList.add('todo-done')
+        todo.done(id)
+      }
+    }
+  })
+}
+
+
 var bindEvents = function() {
   bindEventAdd()
   bindEventDelete()
   bindEventUpdate()
+  bindEventStatus()
 }
 
 var __main = function() {

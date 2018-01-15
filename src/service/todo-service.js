@@ -2,10 +2,10 @@
  * @Author: ywang04
  * @Date:   2018-01-11T09:04:37+11:00
  * @Last modified by:   ywang04
- * @Last modified time: 2018-01-15T11:35:37+11:00
+ * @Last modified time: 2018-01-15T22:20:33+11:00
  */
 
-var utils = require('./utils.js')
+var utils = require('../util/utils.js')
 
 var add = function(todo) {
   var data = JSON.stringify(todo)
@@ -76,7 +76,6 @@ var undo = function(id) {
 }
 
 module.exports = {
-  load: load,
   add: add,
   delete: remove,
   update: update,

@@ -2,7 +2,7 @@
  * @Author: ywang04
  * @Date:   2017-12-18T09:11:51+11:00
  * @Last modified by:   ywang04
- * @Last modified time: 2018-01-13T19:26:03+11:00
+ * @Last modified time: 2018-01-15T22:09:27+11:00
  */
 
 
@@ -10,7 +10,6 @@ var express = require('express')
 var app = express()
 var bodyParser = require('body-parser')
 app.use(express.static('static'))
-app.use("/node_modules", express.static(__dirname + '/node_modules'))
 app.use(bodyParser.json())
 
 var todo = require('./todo.js')

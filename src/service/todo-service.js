@@ -2,56 +2,10 @@
  * @Author: ywang04
  * @Date:   2018-01-11T09:04:37+11:00
  * @Last modified by:   ywang04
- * @Last modified time: 2018-01-13T19:25:10+11:00
+ * @Last modified time: 2018-01-15T11:35:37+11:00
  */
 
 var utils = require('./utils.js')
-
-var appendHtml = function(element, html) {
-  element.insertAdjacentHTML('beforeend', html)
-}
-
-var template = function(todo) {
-  var id = todo.id
-  var task = todo.task
-  var status = todo.status
-  var done = ""
-  if (status) {
-    done = "todo-done"
-  }
-  var t = `
-    <div class="todo-cell ${done}" data-id=${id}>
-      <button type="button" name="button" class="todo-status">Done</button>
-      <button type="button" name="button" class="todo-delete">Delete</button>
-      <button type="button" name="button" class="todo-update">Update</button>
-      <span class="todo-content">${task}</span>
-    </div>
-    `
-  return t
-}
-
-var append = function(todo) {
-  var container = utils.e('#id-div-container')
-  var t = template(todo)
-  appendHtml(container, t)
-}
-
-// Send ajax request to load, add, delete, update todo
-var load = function() {
-  var request = {
-    method: 'GET',
-    url: '/api/todo/all',
-    contentType: 'application/json',
-    responseCallback: function(r) {
-      var todos = JSON.parse(r.response)
-      for (var i = 0; i < todos.length; i++) {
-        var todo = todos[i]
-        append(todo)
-      }
-    }
-  }
-  utils.ajax(request)
-}
 
 var add = function(todo) {
   var data = JSON.stringify(todo)

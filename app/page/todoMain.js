@@ -2,11 +2,23 @@
  * @Author: ywang04
  * @Date:   2018-01-03T10:00:51+11:00
  * @Last modified by:   ywang04
- * @Last modified time: 2018-01-13T19:58:19+11:00
+ * @Last modified time: 2018-01-15T22:22:11+11:00
  */
 
-var utils = require('./utils.js')
-var todo = require('./todoAjax.js')
+var utils = require('../util/utils.js')
+// var todo = require('./todoAjax.js')
+
+var init = function() {
+
+}
+
+var loadTodos = function() {
+
+}
+
+var renderTodos = function() {
+
+}
 
 // bind function
 var bindEventAdd = function() {
@@ -83,7 +95,6 @@ var bindEventStatus = function() {
   })
 }
 
-
 var bindEvents = function() {
   bindEventAdd()
   bindEventDelete()
@@ -92,7 +103,7 @@ var bindEvents = function() {
 }
 
 var __main = function() {
-  todo.load()
+  init()
   bindEvents()
 }
 

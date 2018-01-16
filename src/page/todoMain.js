@@ -2,7 +2,7 @@
  * @Author: ywang04
  * @Date:   2018-01-03T10:00:51+11:00
  * @Last modified by:   ywang04
- * @Last modified time: 2018-01-17T09:27:35+11:00
+ * @Last modified time: 2018-01-17T10:07:40+11:00
  */
 
 var utils = require('../util/utils')
@@ -18,24 +18,21 @@ var loadTodos = function() {
     }
   }
   utils.ajax(request)
-
 }
 
 var renderTodos = function(todos) {
   for (var i = 0; i < todos.length; i++) {
     var todo = todos[i]
-    appendTodo(todo)
+    utils.appendTodo(todo)
   }
 }
 
-
+// initial the main page
 var init = function() {
   loadTodos()
 }
 
-
-
-// bind function
+// Event bind function
 var bindEventAdd = function() {
   var input = utils.e('#id-input-todo')
   var addButton = utils.e('#id-button-add')
@@ -117,6 +114,8 @@ var bindEvents = function() {
   bindEventStatus()
 }
 
+
+// main function
 var __main = function() {
   init()
   bindEvents()

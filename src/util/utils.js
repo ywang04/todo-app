@@ -2,7 +2,7 @@
  * @Author: ywang04
  * @Date:   2018-01-03T10:00:51+11:00
  * @Last modified by:   ywang04
- * @Last modified time: 2018-01-13T15:27:46+11:00
+ * @Last modified time: 2018-01-17T09:07:08+11:00
  */
 
 var e = function(selector) {
@@ -14,20 +14,20 @@ var bindEvent = function(element, eventType, callback) {
 }
 
 var ajax = function(request) {
-  var r = new XMLHttpRequest()
-  r.open(request.method, request.url, true)
+  var xhr = new XMLHttpRequest()
+  xhr.open(request.method, request.url, true)
   if (request.contentType !== undefined) {
-    r.setRequestHeader('Content-Type', request.contentType)
+    xhr.setRequestHeader('Content-Type', request.contentType)
   }
-  r.onreadystatechange = function() {
-    if (r.readyState === 4) {
-      request.responseCallback(r)
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4) {
+      request.responseCallback(xhr)
     }
   }
   if (request.method === "GET") {
-    r.send()
+    xhr.send()
   } else {
-    r.send(request.data)
+    xhr.send(request.data)
   }
 }
 

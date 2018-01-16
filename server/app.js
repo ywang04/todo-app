@@ -2,13 +2,16 @@
  * @Author: ywang04
  * @Date:   2017-12-18T09:11:51+11:00
  * @Last modified by:   ywang04
- * @Last modified time: 2018-01-15T22:09:27+11:00
+ * @Last modified time: 2018-01-16T21:25:44+11:00
  */
 
 
 var express = require('express')
 var app = express()
+var todoRouter = express.Router()
 var bodyParser = require('body-parser')
+
+
 app.use(express.static('static'))
 app.use(bodyParser.json())
 

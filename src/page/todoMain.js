@@ -2,23 +2,38 @@
  * @Author: ywang04
  * @Date:   2018-01-03T10:00:51+11:00
  * @Last modified by:   ywang04
- * @Last modified time: 2018-01-15T22:22:11+11:00
+ * @Last modified time: 2018-01-17T09:27:35+11:00
  */
 
-var utils = require('../util/utils.js')
-// var todo = require('./todoAjax.js')
-
-var init = function() {
-
-}
+var utils = require('../util/utils')
 
 var loadTodos = function() {
+  var request = {
+    method: 'POST',
+    url: '/api/todo/all',
+    contentType: 'application/json',
+    responseCallback: function(xhr) {
+      var todos = JSON.parse(xhr.response)
+      renderTodos(todos)
+    }
+  }
+  utils.ajax(request)
 
 }
 
-var renderTodos = function() {
-
+var renderTodos = function(todos) {
+  for (var i = 0; i < todos.length; i++) {
+    var todo = todos[i]
+    appendTodo(todo)
+  }
 }
+
+
+var init = function() {
+  loadTodos()
+}
+
+
 
 // bind function
 var bindEventAdd = function() {

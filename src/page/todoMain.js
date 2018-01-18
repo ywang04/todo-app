@@ -2,14 +2,15 @@
  * @Author: ywang04
  * @Date:   2018-01-03T10:00:51+11:00
  * @Last modified by:   ywang04
- * @Last modified time: 2018-01-17T10:07:40+11:00
+ * @Last modified time: 2018-01-17T22:52:30+11:00
  */
 
 var utils = require('../util/utils')
+var todo = require('../service/todo-service')
 
 var loadTodos = function() {
   var request = {
-    method: 'POST',
+    method: 'GET',
     url: '/api/todo/all',
     contentType: 'application/json',
     responseCallback: function(xhr) {

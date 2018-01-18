@@ -2,8 +2,10 @@
  * @Author: ywang04
  * @Date:   2018-01-11T09:04:37+11:00
  * @Last modified by:   ywang04
- * @Last modified time: 2018-01-17T09:27:51+11:00
+ * @Last modified time: 2018-01-17T22:53:18+11:00
  */
+
+var utils = require('../util/utils')
 
 var add = function(todo) {
   var data = JSON.stringify(todo)
@@ -14,7 +16,7 @@ var add = function(todo) {
     data: data,
     responseCallback: function(r) {
       var todo = JSON.parse(r.response)
-      appendTodo(todo)
+      utils.appendTodo(todo)
     }
   }
   utils.ajax(request)

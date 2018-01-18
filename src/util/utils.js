@@ -2,7 +2,7 @@
  * @Author: ywang04
  * @Date:   2018-01-03T10:00:51+11:00
  * @Last modified by:   ywang04
- * @Last modified time: 2018-01-17T09:49:56+11:00
+ * @Last modified time: 2018-01-17T22:54:55+11:00
  */
 
 var e = function(selector) {
@@ -67,5 +67,6 @@ module.exports = {
   e: e,
   bindEvent: bindEvent,
   toggleClass: toggleClass,
+  appendTodo: appendTodo,
   ajax: ajax
 }

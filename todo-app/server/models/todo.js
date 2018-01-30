@@ -2,11 +2,11 @@
  * @Author: ywang04
  * @Date:   2018-01-11T15:33:29+11:00
  * @Last modified by:   ywang04
- * @Last modified time: 2018-01-13T19:39:21+11:00
+ * @Last modified time: 2018-01-17T21:42:54+11:00
  */
 
 var fs = require('fs')
-var dataFile = './db/todo.json'
+var dataFile = './server/db/todo.json'
 
 var loadTodosFromFile = function() {
   var content = fs.readFileSync(dataFile, 'utf-8')

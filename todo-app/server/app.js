@@ -2,7 +2,7 @@
  * @Author: ywang04
  * @Date:   2017-12-18T09:11:51+11:00
  * @Last modified by:   ywang04
- * @Last modified time: 2018-01-17T21:36:35+11:00
+ * @Last modified time: 2018-01-17T22:30:55+11:00
  */
 
 
@@ -21,6 +21,9 @@ app.engine('.html', ejs.__express)
 app.set('view engine', 'html')
 
 app.use(bodyParser.json())
+app.use(express.static('dist'))
+
+
 app.use('/', indexRouter)
 app.use('/api/todo', todoRouter)
 
